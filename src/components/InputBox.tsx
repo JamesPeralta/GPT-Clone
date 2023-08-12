@@ -8,11 +8,11 @@ import { askAQuestion } from '../utils/askAQuestion';
 
 import './InputBox.css';
 
-type InputBox = {
+type InputBoxProps = {
   setChatHistory: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-const InputBox: React.FC<InputBox> = ({ setChatHistory }) => {
+const InputBox: React.FC<InputBoxProps> = ({ setChatHistory }) => {
   const [currentMessage, setCurrentMessage] = useState('');
   const [isSendingMessage, setIsSendingMessage] = useState(false);
 
