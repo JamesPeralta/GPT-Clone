@@ -1,0 +1,7 @@
+.all-messages {
+  max-height: '80%'; /* Set container height to viewport height */
+  flex-grow: 1;
+  overflow: scroll;
+  padding: 10px;
+  overflow-anchor: none;
+}
