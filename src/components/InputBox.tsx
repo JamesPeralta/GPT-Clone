@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
-
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-
 import { askAQuestion } from '../utils/askAQuestion';
 
 import './InputBox.css';
 
+import { ChatCompletionResponseMessageRoleEnum } from 'openai';
+import type { ChatMessage } from '../types/ChatMessage';
+
 type InputBoxProps = {
-  setChatHistory: React.Dispatch<React.SetStateAction<string[]>>;
+  chatHistory: ChatMessage[];
+  setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
 };
 
-const InputBox: React.FC<InputBoxProps> = ({ setChatHistory }) => {
+const InputBox: React.FC<InputBoxProps> = ({ chatHistory, setChatHistory }) => {
   const [currentMessage, setCurrentMessage] = useState('');
   const [isSendingMessage, setIsSendingMessage] = useState(false);
 
   const onSendMessage = async () => {
-    setChatHistory((prevHistory) => [currentMessage, ...prevHistory]);
-
     setIsSendingMessage(true);
-    const { role, content: gptAnswer } =
-      (await askAQuestion(currentMessage)) || {};
+    setChatHistory((prevHistory) => [
+      {
+        role: ChatCompletionResponseMessageRoleEnum.User,
+        content: currentMessage,
+      },
+      ...prevHistory,
+    ]);
+    const answer = await askAQuestion(currentMessage, chatHistory);
 
-    if (role && gptAnswer) {
-      setChatHistory((prevHistory) => [gptAnswer, ...prevHistory]);
+    if (answer) {
+      setChatHistory((prevHistory) => [answer, ...prevHistory]);
     }
 
     setCurrentMessage('');
@@ -45,7 +51,11 @@ const InputBox: React.FC<InputBoxProps> = ({ setChatHistory }) => {
         }}
         disabled={isSendingMessage}
       />
-      <Button variant="text" disabled={isSendingMessage} onClick={onSendMessage}>
+      <Button
+        variant="text"
+        disabled={isSendingMessage}
+        onClick={onSendMessage}
+      >
         Submit Text
       </Button>
     </Container>

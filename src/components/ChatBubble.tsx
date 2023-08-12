@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import CardContent from '@mui/material/CardContent';
@@ -8,8 +7,10 @@ import ReactMarkdown from 'react-markdown';
 
 import './ChatBubble.css';
 
+import type { ChatMessage } from '../types/ChatMessage';
+
 type ChatBubbleProps = {
-  message: string;
+  message: ChatMessage;
 };
 
 const ChatBubble: React.FC<ChatBubbleProps> = ({ message }) => (
@@ -21,7 +22,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message }) => (
         src="../images/nova-logo.png"
       />
       <Typography component={ReactMarkdown} variant="body1">
-        {message}
+        {message.content}
       </Typography>
     </CardContent>
   </Paper>
