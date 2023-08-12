@@ -1,8 +1,5 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
-import Avatar from '@mui/material/Avatar';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { Paper, Avatar, CardContent, Typography } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 
 import './ChatBubble.css';

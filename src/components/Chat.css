@@ -4,4 +4,6 @@
   overflow: scroll;
   padding: 10px;
   overflow-anchor: none;
+  margin: 0px;
+  overflow-x: hidden;
 }

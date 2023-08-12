@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+import { TextField, Button, Container, Divider } from '@mui/material';
 import { askAQuestion } from '../utils/askAQuestion';
 
 import './InputBox.css';
@@ -38,25 +36,35 @@ const InputBox: React.FC<InputBoxProps> = ({ chatHistory, setChatHistory }) => {
   };
 
   return (
-    <Container className="user-input">
+    <Container maxWidth="lg" sx={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px',
+    }}>
       <TextField
         id="standard-multiline-static"
         label="Ask a question"
         multiline
-        rows={4}
-        variant="standard"
+        maxRows={8}
+        variant="outlined"
         value={currentMessage}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           setCurrentMessage(event.target.value);
         }}
+        size='medium'
         disabled={isSendingMessage}
+        fullWidth={true}
       />
       <Button
-        variant="text"
+        variant="outlined"
         disabled={isSendingMessage}
         onClick={onSendMessage}
+        sx={{
+          marginLeft: '15px'
+        }}
       >
-        Submit Text
+        Send
       </Button>
     </Container>
   );
