@@ -6,10 +6,12 @@ import './InputBox.css';
 
 import { ChatCompletionResponseMessageRoleEnum } from 'openai';
 import type { ChatMessage } from '../types/ChatMessage';
+import type { MessageOptions } from '../types/MessageOptions'
 
 type InputBoxProps = {
   chatHistory: ChatMessage[];
   isSendingMessage: boolean;
+  messageOptions: MessageOptions;
   setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
   setIsSendingMessage: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -17,6 +19,7 @@ type InputBoxProps = {
 const InputBox: React.FC<InputBoxProps> = ({
   chatHistory,
   isSendingMessage,
+  messageOptions,
   setChatHistory,
   setIsSendingMessage,
 }) => {
@@ -31,7 +34,7 @@ const InputBox: React.FC<InputBoxProps> = ({
       },
       ...prevHistory,
     ]);
-    const answer = await askAQuestion(currentMessage, chatHistory);
+    const answer = await askAQuestion(currentMessage, chatHistory, messageOptions);
 
     if (answer) {
       setChatHistory((prevHistory) => [answer, ...prevHistory]);
