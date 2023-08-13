@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, LinearProgress } from '@mui/material';
+import { Stack } from '@mui/material';
 import ChatBubble from './ChatBubble';
 
 import './Chat.css';
