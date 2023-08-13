@@ -66,7 +66,7 @@ const InputBox: React.FC<InputBoxProps> = ({
         fullWidth={true}
       />
       <Button
-        variant="outlined"
+        variant="contained"
         disabled={isSendingMessage}
         onClick={onSendMessage}
         sx={{

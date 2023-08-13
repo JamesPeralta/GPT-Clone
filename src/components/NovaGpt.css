@@ -3,12 +3,3 @@
   flex-direction: column;
   height: 100vh;
 }
-
-.app-bar {
-  display: flex;
-  align-items: center;
-}
-
-.app-bar > * {
-  padding: 5px;
-}
