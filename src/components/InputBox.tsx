@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Divider } from '@mui/material';
+import { TextField, Button, Container } from '@mui/material';
 import { askAQuestion } from '../utils/askAQuestion';
 
 import './InputBox.css';
@@ -9,12 +9,18 @@ import type { ChatMessage } from '../types/ChatMessage';
 
 type InputBoxProps = {
   chatHistory: ChatMessage[];
+  isSendingMessage: boolean;
   setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
+  setIsSendingMessage: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const InputBox: React.FC<InputBoxProps> = ({ chatHistory, setChatHistory }) => {
+const InputBox: React.FC<InputBoxProps> = ({
+  chatHistory,
+  isSendingMessage,
+  setChatHistory,
+  setIsSendingMessage,
+}) => {
   const [currentMessage, setCurrentMessage] = useState('');
-  const [isSendingMessage, setIsSendingMessage] = useState(false);
 
   const onSendMessage = async () => {
     setIsSendingMessage(true);
@@ -36,12 +42,15 @@ const InputBox: React.FC<InputBoxProps> = ({ chatHistory, setChatHistory }) => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '20px',
-    }}>
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',
+      }}
+    >
       <TextField
         id="standard-multiline-static"
         label="Ask a question"
@@ -52,7 +61,7 @@ const InputBox: React.FC<InputBoxProps> = ({ chatHistory, setChatHistory }) => {
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           setCurrentMessage(event.target.value);
         }}
-        size='medium'
+        size="medium"
         disabled={isSendingMessage}
         fullWidth={true}
       />
@@ -61,7 +70,7 @@ const InputBox: React.FC<InputBoxProps> = ({ chatHistory, setChatHistory }) => {
         disabled={isSendingMessage}
         onClick={onSendMessage}
         sx={{
-          marginLeft: '15px'
+          marginLeft: '15px',
         }}
       >
         Send
