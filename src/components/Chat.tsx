@@ -11,7 +11,7 @@ type ChatProps = {
 };
 
 const Chat: React.FC<ChatProps> = ({ chatHistory }) => (
-  <Stack className="all-messages" direction="column-reverse" spacing={2}>
+  <Stack className="all-messages" direction="column-reverse" spacing={1}>
     {chatHistory.map((message) => (
       <ChatBubble message={message} />
     ))}
