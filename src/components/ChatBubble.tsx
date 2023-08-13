@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Avatar, CardContent, Typography } from '@mui/material';
+import { Paper, Avatar, CardContent } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import { ChatCompletionRequestMessageRoleEnum } from 'openai';
 import { deepOrange, green } from '@mui/material/colors';
@@ -8,7 +8,7 @@ import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
 import './ChatBubble.css';
 
 // @ts-ignore
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import type { ChatMessage } from '../types/ChatMessage';
 
 type ChatBubbleProps = {

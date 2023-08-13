@@ -16,8 +16,13 @@ const NovaGpt: React.FC<{}> = () => {
       <AppBar className="app-bar" position="relative">
         <Typography variant="h6">Nova GPT</Typography>
       </AppBar>
-      <Chat chatHistory={chatHistory}/>
-      {isSendingMessage && <LinearProgress sx={{ margin: '0px 1vw', height: '10px' }} color="success" />}
+      <Chat chatHistory={chatHistory} />
+      {isSendingMessage && (
+        <LinearProgress
+          sx={{ margin: '0px 1vw', height: '10px' }}
+          color="success"
+        />
+      )}
       <Divider
         sx={{
           margin: '5px 0px',
