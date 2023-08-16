@@ -5,10 +5,10 @@ import NovaGpt from './components/NovaGpt';
 import './App.css';
 
 const App: React.FC<{}> = () => (
-  <>
-    <CssBaseline />
-    <NovaGpt />
-  </>
+	<>
+		<CssBaseline />
+		<NovaGpt />
+	</>
 );
 
 export default App;

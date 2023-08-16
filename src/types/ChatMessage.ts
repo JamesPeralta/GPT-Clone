@@ -1,8 +1,3 @@
-import type {
-  ChatCompletionRequestMessage,
-  ChatCompletionResponseMessage,
-} from 'openai';
+import type { ChatCompletionRequestMessage, ChatCompletionResponseMessage } from 'openai';
 
-export type ChatMessage =
-  | ChatCompletionRequestMessage
-  | ChatCompletionResponseMessage;
+export type ChatMessage = ChatCompletionRequestMessage | ChatCompletionResponseMessage;

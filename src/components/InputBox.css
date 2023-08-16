@@ -1,4 +1,10 @@
-.user-input {
-  display: flex;
-  flex-shrink: 0;
+.user-input.MuiContainer-root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.send-button.MuiButton-root {
+	margin-left: 15px;
 }

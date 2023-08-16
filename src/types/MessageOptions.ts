@@ -1,5 +1,5 @@
 export type MessageOptions = {
-  context: number;
-  temperature: number;
-  maxTokens: number;
+	context: number;
+	temperature: number;
+	maxTokens: number;
 };
